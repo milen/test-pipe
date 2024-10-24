@@ -1,17 +1,19 @@
-name: "Test"
-
-on: [workflow_dispatch]
+name: Test
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+  workflow_dispatch:
 
 jobs:
-    test:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v1
-            - name: 'Install Node'
-              uses: actions/setup-node@v1
-            - name: Install mocha
-              run: npm install -g mocha
-            - name: Install dependencies
-              run: npm install 
-            - name: "Run Test"
-              run: npm run test
+
+  tests:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - run: npm i
+
+      - run: npm run test
