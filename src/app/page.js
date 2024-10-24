@@ -9,7 +9,7 @@ export default function Home() {
         <ol data-sel="list">
           <li>Have a cup of coffee.</li>
           <li>Get some dark chocolate.</li>
-          <li>Don't over-work yourself.</li>
+          <li>Don&apos;t over-work yourself.</li>
         </ol>
 
         <div className={styles.ctas}>
