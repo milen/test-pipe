@@ -1,20 +1,20 @@
-name: "Test"
+name: Mocha
 on:
-    pull_request:
-        branches:
-            - main
-
-
+  push:
+    branches:
+      - 'main'
+  pull_request:
 jobs:
-    test:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v1
-            - name: 'Install Node'
-              uses: actions/setup-node@v1
-            - name: Install mocha
-              run: npm install -g mocha
-            - name: Install dependencies
-              run: npm install 
-            - name: "Run Test"
-              run: npm run test
+  build-and-test:
+    runs-on: ubuntu-24.04
+    name: Build and test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.13.1
+      - run: npm ci
+      - run: npm run build
+      - run: npm run test
