@@ -1,0 +1,70 @@
+{
+  "id": "33052c35-64f1-4372-9b58-e09a011c9e2d",
+  "version": "2.0",
+  "name": "Sandbox",
+  "url": "http://localhost:7357",
+  "tests": [{
+    "id": "16e76c23-9ae1-4167-8b26-7e9b1b771105",
+    "name": "welcome",
+    "commands": [{
+      "id": "0c363cb0-ff14-4992-af73-7e8714d45538",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c5de831c-67be-44ab-ab4f-db3d6fed9de9",
+      "comment": "",
+      "command": "click",
+      "target": "css=[data-sel=\"title\"]",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Welcome')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ffc1a036-338c-4865-bd4a-99a34749075a",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=[data-sel=\"title\"]",
+      "targets": [],
+      "value": "Welcome"
+    }, {
+      "id": "2402769b-dcbe-4c3e-803c-b4db45e63a77",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "css=[data-sel=\"list\"]",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "ec496629-0327-447e-8f72-5506e4b1b700",
+      "comment": "",
+      "command": "click",
+      "target": "css=[data-sel=\"go\"]",
+      "targets": [
+        ["linkText=Go", "linkText"],
+        ["css=.page_primary__V8M9Y", "css:finder"],
+        ["xpath=//a[contains(text(),'Go')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Go')]", "xpath:innerText"]
+      ],
+      "value": "",
+      "opensWindow": true,
+      "windowHandleName": "win7086",
+      "windowTimeout": 2000
+    }]
+  }],
+  "suites": [{
+    "id": "3ce6c117-ce62-46a3-9a0c-41558344e96c",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["16e76c23-9ae1-4167-8b26-7e9b1b771105"]
+  }],
+  "urls": ["http://localhost:3001/"],
+  "plugins": []
+}
