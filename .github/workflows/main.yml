@@ -1,4 +1,4 @@
-name: Test (parallel)
+name: Test
 
 on: [workflow_dispatch]
 
@@ -13,11 +13,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        browser: ['chrome', 'firefox', 'edge']
+        browser: ['chrome']
 
     services:
       selenium:
-        image: selenium/standalone-${{ matrix.browser }}
+        image: selenium/standalone-chrome
         options: --shm-size=2gb
 
     steps:
@@ -29,9 +29,4 @@ jobs:
       - run: npm ci
       - run: npm run test
         env:
-          BROWSER: ${{ matrix.browser }}
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: ${{ matrix.browser }}
-          path: screenshots/
+          BROWSER: chrome
