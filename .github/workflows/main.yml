@@ -1,32 +1,20 @@
-name: Test
+name: "Test"
+on:
+    pull_request:
+        branches:
+            - master
 
-on: [workflow_dispatch]
 
 jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-
-    container:
-      image: node:19
-
-    strategy:
-      fail-fast: false
-      matrix:
-        browser: ['chrome']
-
-    services:
-      selenium:
-        image: selenium/standalone-chrome
-        options: --shm-size=2gb
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '19'
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run test
-        env:
-          BROWSER: chrome
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - name: 'Install Node'
+              uses: actions/setup-node@v1
+            - name: Install mocha
+              run: npm install -g mocha
+            - name: Install dependencies
+              run: npm install 
+            - name: "Run Test"
+              run: npm run test
