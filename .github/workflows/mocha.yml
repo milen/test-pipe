@@ -1,19 +1,20 @@
-name: Test
+name: Mocha
 on:
   push:
     branches:
       - 'main'
   pull_request:
-  workflow_dispatch:
-
 jobs:
-
-  tests:
+  build-and-test:
     runs-on: ubuntu-24.04
+    name: Build and test
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - run: npm i
-
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.13.1
+      - run: npm ci
+      - run: npm run dev
       - run: npm run test
