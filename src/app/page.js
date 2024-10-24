@@ -20,7 +20,7 @@ export default function Home() {
             rel="noopener noreferrer"
             data-sel="go"
           >
-            Go
+            Go have fun!
           </a>
         </div>
       </main>
