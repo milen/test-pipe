@@ -7,23 +7,24 @@ on:
 
 jobs:
   test:
+    name: Run tests
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Chrome
-        uses: browser-actions/setup-chrome@v1.7.2
-
-      - name: Driver
-        uses: nanasess/setup-chromedriver@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v4.1.0
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@v1.7.2
+
+      - name: Install Driver
+        uses: nanasess/setup-chromedriver@v2
 
       - name: Install Side Runner
         run: npm install -g selenium-side-runner
