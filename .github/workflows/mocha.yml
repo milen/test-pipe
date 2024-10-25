@@ -31,6 +31,9 @@ jobs:
       - name: Install Side Runner
         run: npm install -g selenium-side-runner
 
+      - name: Run
+        run: npm run dev
+
       - name: Run tests
         run: selenium-side-runner -c "goog:chromeOptions.args=[--headless,--nogpu] browserName=chrome" test/test.side
 
