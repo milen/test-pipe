@@ -1,26 +1,25 @@
-name: Mocha
+name: Tests
+
 on:
-  push:
-    branches:
-      - 'main'
   pull_request:
+    branches:
+      - main
+
 jobs:
-  build-and-test:
-    runs-on: ubuntu-24.04
-    name: Build and test
+  test:
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 20.13.1
-      - uses: actions/checkout@v2
-      - uses: nanasess/setup-chromedriver@v2
-      - run: |
-          export DISPLAY=:99
-          chromedriver --url-base=/wd/hub &
-          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
-      - run: npm ci
-      - run: npm run build
-      - run: npm run test
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Mocha tests
+        run: npm test
