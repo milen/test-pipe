@@ -37,6 +37,9 @@ jobs:
       - name: Install Driver
         uses: nanasess/setup-chromedriver@v2
 
+      - name: Driver
+        run: npm install selenium-webdriver
+
       - name: Install Side Runner
         run: npm install -g selenium-side-runner
 
