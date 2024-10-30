@@ -41,5 +41,5 @@ jobs:
         run: npm run build
 
       - name: Run tests
-        run: selenium-side-runner -X -c "moz:firefoxOptions.args=[--headless,--nogpu] browserName=firefox" test/test.side
+        run: selenium-side-runner -c "moz:firefoxOptions.args=[--headless,--nogpu] browserName=firefox" test/test.side
 
