@@ -40,5 +40,5 @@ jobs:
         run: npm run build
 
       - name: Run tests
-      run: selenium-side-runner --server http://localhost:4444/wd/hub -c "goog:chromeOptions.args=[--headless,--nogpu] browserName=chrome" test/test.side
+        run: selenium-side-runner --server http://localhost:4444/wd/hub -c "goog:chromeOptions.args=[--headless,--nogpu] browserName=chrome" test/test.side
 
