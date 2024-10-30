@@ -41,5 +41,5 @@ jobs:
         run: npm run build
 
       - name: Run tests
-        run: selenium-side-runner -X --server http://${{ steps.ip.outputs.ipv4 }}:7357 test/test.side
+        run: selenium-side-runner -X --server http://${{ steps.ip.outputs.ipv4 }}:7357 -c "moz:firefoxOptions.args=[--headless,--nogpu] browserName=firefox" test/test.side
 
