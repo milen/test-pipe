@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <h1 data-sel="title">Hello!</h1>
+        <h1 data-sel="title">Welcome</h1>
         <ol data-sel="list">
           <li>Have a cup of coffee.</li>
           <li>Get some dark chocolate.</li>
