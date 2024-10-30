@@ -12,7 +12,7 @@ jobs:
 
     services:
       selenium:
-        image: selenium/standalone-chrome:latest
+        image: selenium/standalone-firefox:latest
         ports:
           - 7357:7357
         options: --shm-size="2g"
@@ -27,18 +27,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Chrome
-        uses: browser-actions/setup-chrome@v1.7.2
-
       - name: Public IP
         id: ip
         uses: haythem/public-ip@v1.3
 
-      - name: Install Driver
-        uses: nanasess/setup-chromedriver@v2
-
-      - name: Driver
-        run: npm install selenium-webdriver
+      - name: Setup Geckodriver
+        uses: browser-actions/setup-geckodriver@latest
 
       - name: Install Side Runner
         run: npm install -g selenium-side-runner
@@ -46,9 +40,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      # - name: Test
-      #   run: npm run test
-
       - name: Run tests
-        run: selenium-side-runner -X --server http://${{ steps.ip.outputs.ipv4 }}:7357 -c "goog:chromeOptions.args=[--headless,--nogpu] browserName=chrome" test/test.side
+        run: selenium-side-runner -X --server http://${{ steps.ip.outputs.ipv4 }}:7357 test/test.side
 
