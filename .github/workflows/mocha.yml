@@ -48,6 +48,9 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Run tests
-        run: selenium-side-runner --server http://${{ steps.ip.outputs.ipv4 }}:7357 -c "goog:chromeOptions.args=[--headless,--nogpu] browserName=chrome" test/test.side
+      - name: Test
+        run: npm run test
+
+      # - name: Run tests
+      #   run: selenium-side-runner --server http://${{ steps.ip.outputs.ipv4 }}:7357 -c "goog:chromeOptions.args=[--headless,--nogpu] browserName=chrome" test/test.side
 
