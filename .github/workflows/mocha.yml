@@ -44,12 +44,9 @@ jobs:
         run: |
           wait-on http://localhost:3000
 
-      - name: Wait for additional time (if necessary)
-        run: sleep 10
-
       - name: Check if the app is running
         run: curl -I http://localhost:3000
 
       - name: Run tests
-        run: selenium-side-runner -s http://localhost:3000 test/test.side
+        run: selenium-side-runner test/test.side
 
