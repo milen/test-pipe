@@ -40,6 +40,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Run dev
+        run: npm run dev
+
       - name: Run tests
-        run: selenium-side-runner -X --server http://${{ steps.ip.outputs.ipv4 }} -c "browserName=firefox" test/test.side
+        run: selenium-side-runner -X --server http://${{ steps.ip.outputs.ipv4 }} -c "moz:firefoxOptions.args=[--headless,--nogpu] browserName=firefox" test/test.side
 
