@@ -2,7 +2,7 @@
   "id": "33052c35-64f1-4372-9b58-e09a011c9e2d",
   "version": "2.0",
   "name": "Sandbox",
-  "url": "http://localhost:7357",
+  "url": "http://127.0.0.1:3000",
   "tests": [{
     "id": "16e76c23-9ae1-4167-8b26-7e9b1b771105",
     "name": "welcome",
