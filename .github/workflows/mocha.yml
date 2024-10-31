@@ -13,6 +13,8 @@ jobs:
     services:
       selenium:
         image: selenium/standalone-firefox:latest
+        ports:
+          - "4444:4444"
         options: --shm-size="2g"
 
     steps:
@@ -25,22 +27,29 @@ jobs:
       - name: Install dependencies
         run: npm i
 
-      - name: Public IP
-        id: ip
-        uses: haythem/public-ip@v1.3
-
-      - name: Setup Geckodriver
-        uses: browser-actions/setup-geckodriver@latest
-
       - name: Install Side Runner
         run: npm install -g selenium-side-runner
+
+      - name: Install wait-on
+        run: npm install -g wait-on
 
       - name: Build
         run: npm run build
 
-      - name: Run dev
-        run: npm run dev &
+      - name: Start React app
+        run: |
+          npm start &
+
+      - name: Wait for React app to be ready
+        run: |
+          wait-on http://localhost:3000
+
+      - name: Wait for additional time (if necessary)
+        run: sleep 10
+
+      - name: Check if the app is running
+        run: curl -I http://localhost:3000
 
       - name: Run tests
-        run: selenium-side-runner -X -c "moz:firefoxOptions.args=[--headless,--nogpu] browserName=firefox" test/test.side
+        run: selenium-side-runner -s http://localhost:3000 test/test.side
 
