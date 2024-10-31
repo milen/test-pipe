@@ -38,7 +38,7 @@ jobs:
 
       - name: Start React app
         run: |
-          npm start
+          npm start &
 
       - name: Wait for React app to be ready
         run: |
