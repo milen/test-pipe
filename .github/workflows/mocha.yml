@@ -57,5 +57,8 @@ jobs:
         run: curl -I http://localhost:3000
 
       - name: Run tests
+        env:
+          SELENIUM_BROWSER: chrome
+          SELENIUM_ARGS: "--headless --no-sandbox --disable-dev-shm-usage"
         run: selenium-side-runner test/test.side
 
