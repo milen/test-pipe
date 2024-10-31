@@ -30,15 +30,19 @@ jobs:
       - name: Install Side Runner
         run: npm install -g selenium-side-runner
 
-      - name: Public IP
-        id: ip
-        uses: haythem/public-ip@v1.3
-
       - name: Setup Geckodriver
         uses: browser-actions/setup-geckodriver@latest
 
       - name: Build
         run: npm run build
+
+      - name: Start React app
+        run: |
+          npm start &
+
+      - name: Wait for React app to be ready
+        run: |
+          npx wait-on http://localhost:3000
 
       - name: Run tests
         run: selenium-side-runner -s http://localhost:3000 test/test.side
