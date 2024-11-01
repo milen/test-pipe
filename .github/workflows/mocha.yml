@@ -1,4 +1,4 @@
-name: Tests
+name: Mocha
 
 on:
   push:
@@ -13,7 +13,7 @@ on:
 
 jobs:
   test:
-    name: Run tests
+    name: Run mocha
     runs-on: ubuntu-latest
 
     services:
