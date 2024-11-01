@@ -51,5 +51,5 @@ jobs:
           wait-on http://localhost:3000
 
       - name: Run tests
-        run: npm run test
+        run: selenium-side-runner -c "goog:chromeOptions.args=[--headless,--nogpu] browserName=chrome" test/test.side
 

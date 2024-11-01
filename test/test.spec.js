@@ -23,7 +23,7 @@ describe('welcome', function() {
     throw new Error("New window did not appear before timeout")
   }
   it('welcome', async function() {
-    await driver.get("http://localhost:7357/")
+    await driver.get("http://localhost:3000/")
     await driver.findElement(By.css("[data-sel=\"title\"]")).click()
     assert(await driver.findElement(By.css("[data-sel=\"title\"]")).getText() == "Welcome")
     await driver.wait(until.elementIsVisible(await driver.findElement(By.css("[data-sel=\"list\"]"))), 30000)
