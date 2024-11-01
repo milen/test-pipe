@@ -7,11 +7,7 @@ export default function Home() {
       <main className={styles.main}>
         <h1 data-sel="title">Welcome</h1>
         <p>to the jungle</p>
-        <ol data-sel="list">
-          <li>Have a cup of coffee.</li>
-          <li>Get some dark chocolate.</li>
-          <li>Don&apos;t over-work yourself.</li>
-        </ol>
+
 
         <div className={styles.ctas}>
           <a
